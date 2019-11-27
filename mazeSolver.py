@@ -210,7 +210,7 @@ UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"""
                                                 msg = json.dumps([2, "u.step", [up]])
                                 if setStr[i] == '3':
                                                 msg = json.dumps([2, "u.step", [right]])
-                                if setStr[i] == '4':
+                                if setStr[i] == '':
                                                 msg = json.dumps([2, "u.step", ["down"]])
                                 await websocket.send(msg)
                                 await websocket.recv()
@@ -233,12 +233,11 @@ UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"""
                                 res = await websocket.recv()
                                 resP = json.loads(res)
                                 print ("we got " + str(resP[1]))
-                                switch (resP[1]):
-                                        case "r.upd8":
+                                if resP[1] == "r.upd8":
                                                 return "upd8"
-                                        case "r.loss":
+                                if resP[1] ==  "r.loss":
                                                 return "loss"
-                                        case "r.winn":
+                                if resP[1] ==  "r.winn":
                                                 print("winner!")
                                                 return "win!"
                                 return "upd8"
